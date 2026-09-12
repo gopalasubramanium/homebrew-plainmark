@@ -11,7 +11,7 @@ cask "plainmark@preview" do
   homepage "https://markdown.eksaar.com/"
 
   livecheck do
-    skip "Preview releases are promoted manually after signature and checksum verification"
+    skip "Upstream release sync verifies signatures and checksums before updating this cask"
   end
 
   depends_on macos: :big_sur
@@ -20,7 +20,7 @@ cask "plainmark@preview" do
 
   caveats <<~EOS
     This is Plainmark's preview channel, maintained by its publisher.
-    Both Mac downloads are Developer ID signed and Apple notarized.
+    Mac downloads are Developer ID signed and Apple notarized.
     Your Markdown documents stay where you save them.
   EOS
 end
