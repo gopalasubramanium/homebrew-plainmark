@@ -1,0 +1,42 @@
+name: Verify cask
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - name: Register this checkout as a local tap
+        run: |
+          mkdir -p "$(brew --repository)/Library/Taps/gopalasubramanium"
+          ln -s "$GITHUB_WORKSPACE" "$(brew --repository)/Library/Taps/gopalasubramanium/homebrew-plainmark"
+      - name: Validate cask structure and style
+        env:
+          HOMEBREW_NO_AUTO_UPDATE: "1"
+          HOMEBREW_NO_ANALYTICS: "1"
+        run: |
+          brew style gopalasubramanium/plainmark
+          brew audit --cask gopalasubramanium/plainmark/plainmark@preview
+      - name: Verify both release downloads
+        env:
+          HOMEBREW_NO_AUTO_UPDATE: "1"
+          HOMEBREW_NO_ANALYTICS: "1"
+        run: |
+          brew fetch --cask --arch=arm gopalasubramanium/plainmark/plainmark@preview
+          brew fetch --cask --arch=intel gopalasubramanium/plainmark/plainmark@preview
+      - name: Install and assess the app
+        env:
+          HOMEBREW_NO_AUTO_UPDATE: "1"
+          HOMEBREW_NO_ANALYTICS: "1"
+        run: |
+          brew install --cask gopalasubramanium/plainmark/plainmark@preview
+          codesign --verify --deep --strict --verbose=2 /Applications/Plainmark.app
+          codesign --display --verbose=4 /Applications/Plainmark.app 2>&1 | tee /tmp/plainmark-signature.txt
+          grep -F 'TeamIdentifier=TF2VBZ3XH7' /tmp/plainmark-signature.txt
+          xcrun stapler validate /Applications/Plainmark.app
+          spctl --assess --type execute --verbose=2 /Applications/Plainmark.app
+          brew uninstall --cask gopalasubramanium/plainmark/plainmark@preview
