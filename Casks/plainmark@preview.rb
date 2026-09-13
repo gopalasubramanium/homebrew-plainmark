@@ -1,9 +1,9 @@
 cask "plainmark@preview" do
   arch arm: "aarch64", intel: "x64"
 
-  version "0.3.3"
-  sha256 arm:   "b2bb9343e8a3d6c90c50162d9b57ec9a06aecb107cb1026e7ad51e07a27a15e4",
-         intel: "eaff19cb169b5699b89f549f6561bd5b5a5fc091e3a5db6c1f593baeae1e3e19"
+  version "0.4.0"
+  sha256 arm:   "02a9005fa25f57b3e68e8795008a9c247820ab1502f76aeeafdc6bf90fa11448",
+         intel: "b5a617295b429e08e403e2fff0fd12b36a9fb8b38f265c58344a3766fe75cbdb"
 
   url "https://github.com/gopalasubramanium/plainmark/releases/download/v#{version}/Plainmark_#{version}_#{arch}.dmg"
   name "Plainmark Preview"

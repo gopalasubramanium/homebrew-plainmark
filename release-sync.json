@@ -1,0 +1,26 @@
+{
+  "repository": "gopalasubramanium/plainmark",
+  "release_id": 387760447,
+  "tag": "v0.4.0",
+  "source_commit": "67a98521c49d1c77605a43b21eacfe17e285ed54",
+  "prerelease": true,
+  "assets": {
+    "aarch64": {
+      "id": 560350840,
+      "sha256": "02a9005fa25f57b3e68e8795008a9c247820ab1502f76aeeafdc6bf90fa11448"
+    },
+    "x64": {
+      "id": 560351681,
+      "sha256": "b5a617295b429e08e403e2fff0fd12b36a9fb8b38f265c58344a3766fe75cbdb"
+    }
+  },
+  "verified": [
+    "size",
+    "SHA-256",
+    "GitHub provenance/source commit",
+    "Developer ID/team",
+    "notarization/stapling",
+    "Gatekeeper",
+    "app identity/version/architecture"
+  ]
+}
