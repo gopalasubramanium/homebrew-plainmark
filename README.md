@@ -8,7 +8,7 @@ The official publisher-maintained Homebrew tap for [Plainmark](https://markdown.
 brew install --cask gopalasubramanium/plainmark/plainmark@preview
 ```
 
-Homebrew selects the Apple Silicon or Intel download and verifies its SHA-256 checksum. Both v0.3.3 Mac apps and disk images are signed by Gopala Subramanium and Apple-notarized. The release remains a **preview**. This is the project's own tap, not a listing in Homebrew's central cask repository or the Mac App Store.
+Homebrew selects the Apple Silicon or Intel download and verifies its SHA-256 checksum. Both Mac apps and disk images in the current cask are signed by Gopala Subramanium and Apple-notarized. The release remains an **early release**. The `@preview` suffix identifies the installation channel; the installed app follows the [public release baseline](https://github.com/gopalasubramanium/plainmark/blob/main/docs/RELEASE-POLICY.md). This is the project's own tap, not a listing in Homebrew's central cask repository or the Mac App Store.
 
 If Plainmark is already installed manually in Applications, keep your documents and use that installation or move just the existing app aside before installing through Homebrew. Do not use `--force` to overwrite an installation unexpectedly.
 
